@@ -1,4 +1,6 @@
 Android WiFi ADB - IntelliJ/Android Studio Plugin [![Build Status](https://travis-ci.org/pedrovgs/AndroidWiFiADB.svg?branch=master)](https://travis-ci.org/pedrovgs/AndroidWiFiADB) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20WiFi%20ADB-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2654)
+
+
 ** 扫描局域网无需插入USB,不过图标没了,按钮还在,懒得改了
 
 =================================================
