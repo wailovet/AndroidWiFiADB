@@ -66,7 +66,7 @@ public class ADB {
   }
 
   private boolean connectDeviceByIp(Device device) {
-    String deviceIp = getDeviceIp(device);
+    String deviceIp = device.getIp();
     if (deviceIp.isEmpty()) {
       return false;
     } else {
@@ -106,6 +106,7 @@ public class ADB {
     commandLine.executeCommand(enableTCPCommand);
     String connectDeviceCommand = getCommand("connect " + deviceIp);
     String connectOutput = commandLine.executeCommand(connectDeviceCommand);
+    System.out.println(connectOutput);
     return connectOutput.contains("connected");
   }
 
