@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<idea-plugin version="2">
-  <id>com.github.pedrovgs.androidwifiadb</id>
-  <name>Android WiFi ADB</name>
-  <version>2.5-SNAPSHOT</version>
-  <vendor email="pedrovicente.gomez at gmail dot com" url="http://www.github.com/pedrovgs">
-    Pedro Vicente Gomez Sanchez
-  </vendor>
+<idea-plugin>
+    <id>com.github.pedrovgs.androidwifiadb</id>
+    <name>Android WiFi ADB</name>
+    <version>2.6-SNAPSHOT</version>
+    <vendor email="pedrovicente.gomez at gmail dot com" url="http://www.github.com/pedrovgs">
+        Pedro Vicente Gomez Sanchez
+    </vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Provides an action which allow you quickly connect your Android device over WiFi to install, run and debug your applications without a USB connected by pressing one button.
       <br>
       Connect your device using a USB cable and press the Android WiFi ADB button. Once the device be connected over WiFi you'll see an IntelliJ/Android Studio notification. Now you can disconnect your USB cable and enjoy deploying, running and debugging your applications over WiFi.
       <br>
       The version 2.0 enables a window to check which of your devices are connected or not and connect/disconnect it manually if needed.
     ]]>
-  </description>
+    </description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
+      2.5: 扫描本地网段自动添加设备.<br>
       2.4: Generate the plugin binary using Java 1.6 instead of Java 1.8.<br>
       2.3: Update the main action configuration to be shown in the NavBarToolBar and also in the MainToolBar if the first on is disabled.<br>
       2.2: Update error message shown when the device is not properly connected.<br>
@@ -26,42 +27,38 @@
       1.1: Fixes for Windows and Linux.<br>
       1.0: Initial version.<br>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <idea-version since-build="131"/>
+    <idea-version since-build="131"/>
 
-  <extensions defaultExtensionNs="com.intellij">
+    <extensions defaultExtensionNs="com.intellij">
 
-    <defaultProjectTypeProvider type="Android"/>
+        <defaultProjectTypeProvider type="Android"/>
 
-      <toolWindow id="Android WiFi ADB"
-              anchor="right"
-              factoryClass="com.github.pedrovgs.androidwifiadb.window.AndroidWiFiADBWindow">
-      </toolWindow>
-  </extensions>
+        <toolWindow id="Android WiFi ADB"
+                    anchor="right"
+                    factoryClass="com.github.pedrovgs.androidwifiadb.window.AndroidWiFiADBWindow"/>
+    </extensions>
 
-  <application-components>
+    <application-components>
 
-  </application-components>
+    </application-components>
 
-  <project-components>
+    <project-components>
 
-  </project-components>
+    </project-components>
 
-  <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.android</depends>
 
-  <actions>
+    <actions>
 
-    <action id="AndroidWiFiADB"
-        class="com.github.pedrovgs.androidwifiadb.action.AndroidWiFiADBAction"
-        text="AndroidWiFiADB"
-        description="Connects your Android devices to your computer over TCP just with one click."
-        project-type="Android"
-        >
-      <add-to-group group-id="MainToolBar" anchor="last"/>
-      <add-to-group group-id="NavBarToolBar" anchor="first"/>
-    </action>
+        <group id="AndroidWiFiADB" popup="true" text="无线调试">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+        </group>
+        <action id="screen" class="com.github.pedrovgs.androidwifiadb.action.AndroidWiFiADBAction" text="扫描设备">
+            <add-to-group group-id="AndroidWiFiADB"/>
+        </action>
 
-  </actions>
+    </actions>
 
 </idea-plugin>
